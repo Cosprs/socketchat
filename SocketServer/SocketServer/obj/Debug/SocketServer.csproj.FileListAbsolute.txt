@@ -1,0 +1,6 @@
+C:\Users\khuard\Documents\Visual Studio 2015\Projects\WebApi\SocketServer\SocketServer\bin\Debug\SocketServer.exe.config
+C:\Users\khuard\Documents\Visual Studio 2015\Projects\WebApi\SocketServer\SocketServer\bin\Debug\SocketServer.exe
+C:\Users\khuard\Documents\Visual Studio 2015\Projects\WebApi\SocketServer\SocketServer\bin\Debug\SocketServer.pdb
+C:\Users\khuard\Documents\Visual Studio 2015\Projects\WebApi\SocketServer\SocketServer\obj\Debug\SocketServer.csprojResolveAssemblyReference.cache
+C:\Users\khuard\Documents\Visual Studio 2015\Projects\WebApi\SocketServer\SocketServer\obj\Debug\SocketServer.exe
+C:\Users\khuard\Documents\Visual Studio 2015\Projects\WebApi\SocketServer\SocketServer\obj\Debug\SocketServer.pdb
