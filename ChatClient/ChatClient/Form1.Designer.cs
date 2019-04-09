@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_printmessages = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tb_sendmessage = new System.Windows.Forms.TextBox();
+            this.tb_pseudo = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tb_printmessages
             // 
-            this.textBox1.Location = new System.Drawing.Point(34, 79);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(556, 335);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.tb_printmessages.Location = new System.Drawing.Point(34, 79);
+            this.tb_printmessages.Multiline = true;
+            this.tb_printmessages.Name = "tb_printmessages";
+            this.tb_printmessages.Size = new System.Drawing.Size(556, 335);
+            this.tb_printmessages.TabIndex = 0;
+            this.tb_printmessages.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button1
             // 
@@ -62,19 +62,19 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox2
+            // tb_sendmessage
             // 
-            this.textBox2.Location = new System.Drawing.Point(34, 430);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(556, 20);
-            this.textBox2.TabIndex = 2;
+            this.tb_sendmessage.Location = new System.Drawing.Point(34, 430);
+            this.tb_sendmessage.Name = "tb_sendmessage";
+            this.tb_sendmessage.Size = new System.Drawing.Size(556, 20);
+            this.tb_sendmessage.TabIndex = 2;
             // 
-            // textBox3
+            // tb_pseudo
             // 
-            this.textBox3.Location = new System.Drawing.Point(545, 4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(154, 20);
-            this.textBox3.TabIndex = 3;
+            this.tb_pseudo.Location = new System.Drawing.Point(545, 4);
+            this.tb_pseudo.Name = "tb_pseudo";
+            this.tb_pseudo.Size = new System.Drawing.Size(154, 20);
+            this.tb_pseudo.TabIndex = 3;
             // 
             // button2
             // 
@@ -95,10 +95,10 @@
             // 
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.tb_pseudo);
+            this.panel1.Controls.Add(this.tb_sendmessage);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.tb_printmessages);
             this.panel1.Location = new System.Drawing.Point(48, 17);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(720, 513);
@@ -133,10 +133,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_printmessages;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tb_sendmessage;
+        private System.Windows.Forms.TextBox tb_pseudo;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;

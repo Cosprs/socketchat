@@ -54,18 +54,18 @@ namespace ChatClient
             if (this.InvokeRequired)
                 this.Invoke(new MethodInvoker(msg));
             else
-                textBox1.Text = textBox1.Text + Environment.NewLine + " >> " + readData;
+                tb_printmessages.Text = tb_printmessages.Text + Environment.NewLine + " >> " + readData;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
             clientSocket.Connect("127.0.0.1", 8888);
-            readData = "#Connecté au serveur Chat !#";
+            readData = "--------------Connecté au serveur Chat !--------------";
             msg();
             serverStream = clientSocket.GetStream();
 
-            byte[] outStream = System.Text.Encoding.ASCII.GetBytes(textBox3.Text + "$");
+            byte[] outStream = System.Text.Encoding.ASCII.GetBytes(tb_pseudo.Text + "$");
             serverStream.Write(outStream, 0, outStream.Length);
             serverStream.Flush();
 
@@ -75,17 +75,17 @@ namespace ChatClient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            byte[] outStream = System.Text.Encoding.ASCII.GetBytes(textBox2.Text + "$");
+            byte[] outStream = System.Text.Encoding.ASCII.GetBytes(tb_sendmessage.Text + "$");
             serverStream.Write(outStream, 0, outStream.Length);
             serverStream.Flush();
-            
+            tb_sendmessage.Clear();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Lines.Count() > 23)
+            if (tb_printmessages.Lines.Count() > 23)
             {
-                textBox1.Text = "";
+                tb_printmessages.Text = "";
             }
         }
     }
