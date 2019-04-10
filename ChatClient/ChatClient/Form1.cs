@@ -25,12 +25,12 @@ namespace ChatClient
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.BackgroundImage = Properties.Resources.everest_minimalist_wallpaper_blue;
+            this.BackgroundImage = Properties.Resources.everest_minimalist_wallpaper_blue;//Set bg
             panel1.Location = new Point(
             this.ClientSize.Width / 2 - panel1.Size.Width / 2,
             this.ClientSize.Height / 2 - panel1.Size.Height / 2);
             panel1.Anchor = AnchorStyles.None;
-            panel1.BackColor = Color.FromArgb(50, Color.White);
+            panel1.BackColor = Color.FromArgb(50, Color.White); // panel en blanc transparent 
         }
 
 
@@ -39,10 +39,10 @@ namespace ChatClient
         {
             while (true)
             {
-                serverStream = clientSocket.GetStream();
+                serverStream = clientSocket.GetStream(); //On récup le flux du serveur
                 byte[] inStream = new byte[10025];
                 serverStream.Read(inStream, 0, inStream.Length);
-                string returndata = System.Text.Encoding.ASCII.GetString(inStream);
+                string returndata = System.Text.Encoding.UTF8.GetString(inStream); //On le convert en string UTF8
                 readData = "" + returndata;
                 msg();
                 
@@ -54,28 +54,28 @@ namespace ChatClient
             if (this.InvokeRequired)
                 this.Invoke(new MethodInvoker(msg));
             else
-                tb_printmessages.Text = tb_printmessages.Text + Environment.NewLine + " >> " + readData;
+                tb_printmessages.Text = tb_printmessages.Text + Environment.NewLine + " >> " + readData; //On Ajout le message à la tb
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
-            clientSocket.Connect("127.0.0.1", 8888);
+            clientSocket.Connect("127.0.0.1", 8888); //On se connecte au serveur socket
             readData = "--------------Connecté au serveur Chat !--------------";
             msg();
             serverStream = clientSocket.GetStream();
 
-            byte[] outStream = System.Text.Encoding.ASCII.GetBytes(tb_pseudo.Text + "$");
+            byte[] outStream = System.Text.Encoding.UTF8.GetBytes(tb_pseudo.Text + "$");
             serverStream.Write(outStream, 0, outStream.Length);
             serverStream.Flush();
 
-            Thread ctThread = new Thread(getMessage);
-            ctThread.Start();
+            Thread ctThread = new Thread(getMessage); 
+            ctThread.Start(); //On lance un thread qui tourne en boucle qui récup les messages du flux
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            byte[] outStream = System.Text.Encoding.ASCII.GetBytes(tb_sendmessage.Text + "$");
+            byte[] outStream = System.Text.Encoding.UTF8.GetBytes(tb_sendmessage.Text + "$"); //Stream to UTF8
             serverStream.Write(outStream, 0, outStream.Length);
             serverStream.Flush();
             tb_sendmessage.Clear();

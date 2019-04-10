@@ -12,35 +12,35 @@ namespace SocketServer
 {
     class Program
     {
-        public static Hashtable clientsList = new Hashtable();
+        public static Hashtable clientsList = new Hashtable(); //Liste des clients
 
         static void Main(string[] args)
         {
             Int32 port = 8888;
             IPAddress localAddr = IPAddress.Parse("127.0.0.1");
-            TcpListener serverSocket = new TcpListener(localAddr, port);
-            TcpClient clientSocket = default(TcpClient);
+            TcpListener serverSocket = new TcpListener(localAddr, port); //Ecoute de connexion clients sur l'ip/port
+            TcpClient clientSocket = default(TcpClient); //Client
             int counter = 0;
 
-            serverSocket.Start();
-            Console.WriteLine("#Le serveur de Chat est lancé");
+            serverSocket.Start(); //On lance l'écoute serveur
+            Console.WriteLine("-------Le serveur de Chat est lancé-------");
             counter = 0;
             while ((true))
             {
                 counter += 1;
-                clientSocket = serverSocket.AcceptTcpClient();
+                clientSocket = serverSocket.AcceptTcpClient(); //Accept les requêtes de connexion
 
                 byte[] bytesFrom = new byte[10025];
                 string dataFromClient = null;
 
-                NetworkStream networkStream = clientSocket.GetStream();
+                NetworkStream networkStream = clientSocket.GetStream(); //On récupère le flux du client
                 networkStream.Read(bytesFrom, 0, bytesFrom.Length); //(int)clientSocket.ReceiveBufferSize
-                dataFromClient = System.Text.Encoding.ASCII.GetString(bytesFrom);
+                dataFromClient = System.Text.Encoding.UTF8.GetString(bytesFrom);//On convertit le flux en string UTF8
                 dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
 
                 clientsList.Add(dataFromClient, clientSocket);
 
-                broadcast(dataFromClient + " s'est connecté ", dataFromClient, false);
+                broadcast(dataFromClient + " s'est connecté ", dataFromClient, false); //On envoie à tout le monde le message "s'est connecté"
 
                 Console.WriteLine(dataFromClient + " s'est connecté ");
                 handleClinet client = new handleClinet();
@@ -64,11 +64,11 @@ namespace SocketServer
 
                 if (flag == true)
                 {
-                    broadcastBytes = Encoding.ASCII.GetBytes(uName + ": " + msg);
+                    broadcastBytes = Encoding.UTF8.GetBytes(uName + ": " + msg);
                 }
                 else
                 {
-                    broadcastBytes = Encoding.ASCII.GetBytes(msg);
+                    broadcastBytes = Encoding.UTF8.GetBytes(msg);
                 }
 
                 broadcastStream.Write(broadcastBytes, 0, broadcastBytes.Length);
@@ -106,14 +106,14 @@ namespace SocketServer
                     try
                     {
                         requestCount = requestCount + 1;
-                        NetworkStream networkStream = clientSocket.GetStream();
-                        networkStream.Read(bytesFrom, 0, bytesFrom.Length);
-                        dataFromClient = System.Text.Encoding.ASCII.GetString(bytesFrom);
+                        NetworkStream networkStream = clientSocket.GetStream(); //Recup le flux du client
+                        networkStream.Read(bytesFrom, 0, bytesFrom.Length); //read
+                        dataFromClient = System.Text.Encoding.UTF8.GetString(bytesFrom); //Convertit UTF8
                         dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
                         Console.WriteLine("From chatclient - " + clNo + " : " + dataFromClient);
                         rCount = Convert.ToString(requestCount);
 
-                        Program.broadcast(dataFromClient, clNo, true);
+                        Program.broadcast(dataFromClient, clNo, true);//On envoie le message du flux à tout le monde
                     }
                     catch (Exception ex)
                     {
